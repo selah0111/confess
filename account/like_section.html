@@ -1,0 +1,9 @@
+<form action="{% url 'like' %}" method="POST">
+    {% csrf_token %}
+    {% if is_liked %}
+    <i class="fa fa-heart" style="color: rgb(22, 23, 24); " type="submit" id="like" name="post_id" value="{{ post.id }}"></i>
+    {% else %}
+    <i class="fa fa-heart" style="color: rgb(189, 178, 178); " type="submit" id="like" name="post_id" value="{{ post.id }}"></i>
+    {% endif %}      
+    {{ total_likes }} Likes
+</form>

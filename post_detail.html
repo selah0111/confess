@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %} 
+<style>
+    body{color: white;font-family: 'Nunito Sans', sans-serif;}.confess h4{ letter-spacing: 5px; padding:50px 5% 0px 0px;} .btn{border-radius: 24px;}.fa-angle-left{ color: rgb(175, 163, 163);float: left; }.height{float: left;}.new-thing{font-family: 'Kalam', cursive;}.fa-angle-left{ font-size: 32px; padding:50px 0px 0px 5%;}@media (min-width: 1450px){.container{margin-top: 50px;}.confess{height: 150px; width: 100%;}.confess h4{padding:50px 5% 0px 0px;}.height{height: 330px; width: 40%;}.new-thing{height: 360px;padding:5%;}}@media (min-width: 1200px) and (max-width:1450px){.confess{height: 150px; width: 100%;}.height{height: 330px; width: 40%;}.new-thing{height: 360px;padding-top: 60px;}}@media (min-width: 992px) and (max-width:1199.98px){.confess{height: 150px; width: 100%;}.height{height: 330px; width: 40%;}.new-thing{height: 360px;padding-top: 60px;}}@media (min-width: 768px) and (max-width:991.98px){.confess{height: 130px; width: 100%;}.height{height: 280px; width: 43%;}.new-thing{height: 320px;padding:5%;}.new-thing p{font-size: 12px;}}@media (min-width: 420px) and (max-width:767.98px){.confess{height: 130px; width: 100%;}.height{height: 270px; width: 80%; margin-left: 10%;}.new-thing{height: 320px;padding:5%; float: left;}.new-thing p{font-size: 12px;}}@media (min-width:321px) and (max-width:420px){.confess{height: 130px; width: 100%;}.height{height: 260px; width: 90%; margin-left: 5%;}.new-thing{height: 320px;padding:5%; float: left;}.new-thing p{font-size: 12px;}}@media (max-width:320px){.confess{height: 130px; width: 100%;}.height{height: 230px; width: 90%; margin-left: 5%;}.new-thing{height: 320px;padding:5%; float: left;}.new-thing p{font-size: 12px;}}
+</style>
+<div class="confess "><a href="{% url 'confessions-home' %}"><span><i class="fa fa-angle-left "></i></span></a><h4 class="text-center" >CONFESSION</h4> </div>
+    <div class="container" >
+        <img src="{{ postc.conimage.url }}"  class="height" alt="confess confessions theconfess" >
+        <div class="new-thing  text-center" > 
+            <a href="{% url 'confessions-home' %}"></a>
+            <p class="text-center pt-2">{{ postc.date_post|date:'F d, Y'}}</p>
+        <p >{{ postc.content}}</p>        
+        {% if postc.user == user %}
+        <a class=" btn btn-dark" href="{% url 'confessions-update' postc.id %}">Update</a>
+        <a class=" btn btn-danger  " href="{% url 'confessions-delete' postc.id %}">Delete</a>
+        {% endif %}
+        </div>
+    </div>        
+{% endblock content %}        

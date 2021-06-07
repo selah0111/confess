@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body{background-color: white; font-family: 'Poppins', sans-serif;}.btn{background-color: rgb(37, 33, 33);border: none;color: white;}@media (min-width: 1450px){.nine{width: 60%; margin:70px 0px 0px 22%;}.new{font-size: 12px; margin:0px 0px 0px 22%;}}@media (min-width: 1200px) and (max-width: 1450px){.nine{width: 60%; margin:40px 0px 0px 20%;}.new{font-size: 12px; margin:0px 0px 0px 20%;}}@media (min-width: 992px) and (max-width: 1199.98px){.nine{width: 60%; margin:40px 0px 0px 22%;}.new{font-size: 12px; margin:0px 0px 0px 22%;}}@media (min-width: 768px) and (max-width: 991.98px){.nine{width: 60%; margin:10px 0px 0px 22%;}.new{font-size: 8px; margin:0px 0px 0px 22%;}}@media(min-width: 420px) and (max-width: 767.98px) {.nine{width: 75%; margin:10px 0px 0px 12%;}.btn{border: none; height: 24px; font-size: 8px; }.new{font-size: 8px;}}@media (min-width:321px) and (max-width: 420px){.nine{width: 90%; margin: 10px 0px 0px 4%; font-size: 14px;}.btn{border: none;height: 24px; font-size: 8px; }.new{font-size: 8px;}}@media (max-width:320px){.nine{width: 100%; margin-top: 5px;}.btn{border: none;height: 24px; font-size: 8px; }.new{font-size: 8px;}}
+</style>
+{% if user.is_authenticated %}
+  {% if user.id == profile.user.id %}
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data" >
+          <div class="nine text-center">
+            {% csrf_token %}
+            {{ form.bio|as_crispy_field}}
+          </div>
+          <div class="new ">
+            {{ form.userImage|as_crispy_field}}
+            <button type="submit" class="btn ">Update</button>
+          </div>   
+          </form>  
+        </form>
+    </div>
+  {% endif%}
+{% endif %}
+{% endblock content %}        

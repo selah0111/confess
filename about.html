@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+body{background-color: white;}.form_horizontal { font-family: 'Poppins', sans-serif;text-align: center;}  .form_horizontal .title_login{color: rgb(39, 36, 36); font-size: 23px;font-weight: 400;letter-spacing: 1px;text-decoration: uppercase;margin: 0 0 35px 0;}.form_horizontal .form-group{margin: 0 0 10px; position: relative;}.form_horizontal .input-icon{position: absolute; left:15px; top:50%; transform: translateY(-50%);font-size: 13px;color: rgb(236, 230, 230);}.form_horizontal .form-control{color: rgb(253, 249, 249); background-color: rgb(32, 29, 29); font-size: 13px; letter-spacing: 1px; height: 37px; padding:2px 15px 2px 35px; border: none; border-radius: 50px;}.form_horizontal .form-control::placeholder{color:white; font-size: 14px;text-align: center;}.icon{color: rgb(32, 30, 30);padding:5px;}
+</style>
+    <div class="container "  >
+        <div class="row justify-content-center" >
+            <div class=" col-md-12  col-sm-12 col-lg-6" style="margin-top: 30px;" >
+                <form class="form_horizontal">
+                    <h3 class="title_login">ABOUT ME</h3>         
+                    <div class="form-group">
+                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                        <input  class="form-control" placeholder="SELA MUHAMMAD SELA" >
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon"><i class="fa fa-envelope"></i></span>   
+                        <input class="form-control"  placeholder="selahhazard@gmail.com" >
+                    </div>
+                    <div class="form-group ">
+                        <span class="input-icon"><i class="fa fa-globe-asia"></i></span>     
+                        <input  class="form-control" placeholder="karachi, Pakistan"  >
+                    </div>
+                    <div class="form-group ">
+                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                        <input class="form-control"  placeholder="Age 23" >
+                    </div>
+                    <div class="form-group ">
+                        <span class="input-icon"><i class="fa fa-award"></i></span>
+                        <input class="form-control"  placeholder="Django-Python-MYSQL-Html-CSS" >
+                    </div>
+                    <div class="icons" style="margin-left: 5px;">
+                    <a href="https://www.facebook.com/awara.jan.7" target="_blank"> <span class="icon"><i class="fab fa-facebook"  ></i></span></a>
+                    <a href="https://twitter.com/awaraeh17" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a>
+                    <a href="https://www.instagram.com/selah0111/" target="_blank"><span class="icon"><i class="fab fa-instagram"></i></span></a>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

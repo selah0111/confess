@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body{background-color: white; font-family: 'Poppins', sans-serif;}@media (min-width: 1450px){.nine{width: 60%; margin:70px 0px 0px 22%;}}@media (min-width: 1200px)and (max-width: 1450px){.nine{width: 60%; margin:40px 0px 0px 20%;}}@media (min-width: 992px) and (max-width: 1199.98px){.nine{width: 60%; margin:40px 0px 0px 22%;}}@media (min-width: 768px) and (max-width: 991.98px){.nine{width: 60%; margin:10px 0px 0px 22%;}}@media (min-width: 420px) and (max-width: 767.98px) {.nine{width: 75%; margin:10px 0px 0px 12%;}}@media (min-width:321px) and (max-width: 420px){.nine{width: 90%; margin: 10px 0px 0px 4%; font-size: 14px;}}@media (max-width:320px){.nine{width: 100%; margin-top: 5px;}}
+</style>
+<div class="container" style="margin-top: 30px;">
+  <form method="POST"  >
+    <div class="nine text-center">
+      {% csrf_token %}
+    {{form|crispy}}
+    <div class="form-group text-center" >
+      <button type="submit" class="btn btn-outline-dark">Update</button>
+    </div> 
+  </form>
+{% endblock content %}        
+

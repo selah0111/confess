@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.fa{color: rgb(250, 250, 250); font-size: 14px; margin:2% 0px 0px 0px;}.icon .fa{font-size: 20px;}.height {float: left;}.list {width: 100%;}@media (min-width: 1450px){.icon .fa{margin: 0px 0px 20px 49.3%;}.height {height: 300px;width: 25%;}}@media (min-width: 1200px) and (max-width: 1450px){.icon .fa{margin: 0px 0px 20px 49.3%;}.height{height:300px;width: 25%;}}@media (min-width: 992px) and (max-width: 1199.98px){.icon .fa{margin: 0px 0px 20px 49.2%;}.height{height:270px;width: 25%;}}@media (min-width: 768px) and (max-width: 991.98px){.icon .fa{margin: 0px 0px 20px 49.4%;}.list {padding: 0px 0px 0px 10%;}.height{height: 200px;width: 30%;}}@media (min-width: 420px) and (max-width: 767.98px){.icon .fa{margin: 0px 0px 20px 48%;}.height{height:200px;width: 50%;}}@media (min-width:321px) and (max-width: 420px){.icon .fa{margin: 0px 0px 20px 47.4%;}.height{height:180px;width: 50%;}}@media (max-width:320px){.icon .fa{margin: 0px 0px 20px 47%;}.height {height: 160px;width: 50%;}}
+</style>
+<div class="icon "><i class="fa fa-upload"  data-toggle="modal" data-target="#UploadModal" ></i></div>
+  <div class="list">
+    {% for x in image %}      
+      {% if x.image %}
+        <a href="{% url 'detail' x.id %}"><img src="{{x.image.url}}" class="height " style="object-fit: cover;" alt="confess confessions theconfess"></a>
+      {% endif %}   
+    {% endfor %}
+  </div>
+{% endblock content %}    
+
+
+

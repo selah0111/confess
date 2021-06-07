@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .userImage{width: 100%; height: auto;background-color: white;}.userImage img{border-radius: 50%;}.proname{color:rgb(29, 27, 27); float: left;  color:rgb(29, 27, 27); float: left;   position: relative; text-align: center; font-family: 'Nunito Sans', sans-serif;} .head h3{font-family: 'Nunito Sans', sans-serif; color: white; } .height {float: left;}.btn{ background-color: rgb(29, 27, 27); color: white; border-radius: 24px;}@media (min-width: 1450px){.userImage img{ width:18%;height:200px;margin-top: 30px; margin-left: 41%;  }.proname{margin-top: -60px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 20px 0px;font-weight: bold; }.head h3{margin: 80px 0px 50px 0px;} .height{ height: 18vh; width: 33%; padding: 15px;}.btn{height: 35px; width: 100px;font-size: 14px;margin:-5px 0px 5px 0px;}}@media (min-width: 1200px)and (max-width: 1450px){ .userImage img{ width:18%;height:180px;margin-top: 30px; margin-left: 41%;}.proname{margin-top: -60px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 20px 165px;font-weight: bold;width: 70%;}.head h3{margin: 40px 0px 30px 0px;} .height {height: 300px; width: 33%; padding: 8px;}.btn{height: 35px; width: 100px;font-size: 14px;margin:-5px 0px 5px 0px;}}@media (min-width: 992px) and (max-width: 1199.98px){.userImage{width: 90%;} .userImage img{ width:18%;height:140px;margin-top: 30px; margin-left: 41%;}.proname{margin-top: -60px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 20px 135px;font-weight: bold;width: 70%;}.head h3{margin: 40px 0px 30px 0px;} .height {height: 240px; width: 33%; padding: 8px;}.btn{height: 35px; width: 100px;font-size: 14px;;margin:-5px 0px 5px 0px;}}@media (min-width: 768px) and (max-width: 991.98px){.userImage img{ width:22%;height:150px;margin-top: 30px; margin-left: 39%;}.proname{margin-top: -60px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 20px 0px;font-weight: bold;}.head h3{margin: 40px 0px 30px 0px;} .height {height: 200px; width: 33%; padding: 8px 0px 0px 8px;}.btn{height: 28px; width: 80px;font-size: 11px;margin:-5px 0px 5px 0px;}}@media (min-width: 420px) and (max-width: 767.98px){ .userImage img{ width:35.5%;height:140px;margin-top: 30px; margin-left: 32%;}.proname{margin-top: -60px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 20px 0px;font-weight: bold;}.head h3{margin: 30px 0px 20px 0px;font-size: 18px;}.height {height: 180px; width: 50%; padding: 5px;}.btn{height: 24px; width: 65px; font-size: 8px;margin:-10px 0px 5px 0px;}}@media (min-width:321px) and (max-width: 420px){ .userImage img{width:35.5%;height:120px;margin-top: 30px; margin-left: 32%;}.proname{margin-top: -65px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 30px 0px; font-weight: bold;}.head h3{margin: 30px 0px 20px 0px;font-size: 18px;}.height {height: 140px; width: 50%; padding: 5px;}.btn{height: 24px; width: 65px;font-size: 8px;margin:-10px 0px 5px 0px;}}@media (max-width:320px){ .userImage img{width:36%;height:100px;margin-top: 30px; margin-left: 32%;}.proname{margin-top: -65px;}.proname h1{font-size: 30px; margin-top: 70px;} .new{font-size: 12px;margin: -10px 0px 30px 0px; font-weight: bold;}.head h3{margin: 30px 0px 20px 0px;font-size: 18px;}.height{height: 21vh; width: 50%; padding: 5px;}.btn{height: 24px; width: 65px;font-size: 8px;margin:-10px 0px 5px 0px;}}
+</style>
+<div class="container ">
+    <div class="row">
+        <div class="userImage container ">
+            <img src="{{userImg.url}} "   alt="confess confessions theconfess">
+            <div class=" proname text-center col-lg-12 col-md-12 col-sm-12 " ><h1>{{user_obj.username}}</h1>
+                {% if request.user == user_obj %}
+                <a class="btn"  href="{% url 'edit_profile' user.id %}">edit profile</a>  
+                {% endif %}  
+                {% if connection and not request.user == user_obj %}
+                    <a type="button" style="margin-top: -5px; height: 35px; width: 90px; background-color: rgb(206, 122, 25); color: white; font-size: 14px;border-radius: 24px; padding: 6px;"  id="follow" role="button" href="{% url 'follow' user_obj.username %}">unfollow</a>
+                {% elif not connection and not request.user == user_obj %}
+                    <a type="button" class="btn" id="follow" role="button" href="{% url 'follow' user_obj.username %}">Follow</a>
+                {% endif %}  
+                    <p>Follower {{follower}} Following {{following}}</p>
+                    <div class="new " >{{bio}}</div>  
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+<div class=" head text-center "><h3> Pictures</h3> </div>
+    {% for i in posts %}      
+        {% for j in i %}
+        <a href="{% url 'pro-detail' j.id %} " ><img src="{{ j.image.url }}"class="height " alt="confess confessions theconfess"></a>
+     
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+     <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel='stylesheet' type='text/css' href="{% static 'account/main.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Open+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Xanh+Mono&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script> 
+</head>
+<style>
+  body{margin: 0px auto;  background-color: rgb(29, 27, 27);}#custom-btn{color: black; background-color: rgb(0, 0, 0); height: 30px; width: 40; border-radius: 8px; text-decoration: none; border: 0;}::-webkit-scrollbar{width: 8px;height: 8px; }::-webkit-scrollbar-thumb{ background-color:rgb(0, 0, 0) ;}.box{ width: 300px;height: 30px;border-radius: 30px;display: flex;text-align: center;padding: 20px; }.s-icon > i{font-size: 15px; color: rgb(253, 253, 253); float: left; margin-top: -5px;}.box > input{background-color: rgb(29, 27, 27);margin:-20px 0px 0px 10px; flex: 1;height: 40px; color:white; border-style: none;}.navbar{background-color: rgb(29, 27, 27); }.nav-item a{text-decoration: none;font-family: 'Nunito Sans', sans-serif;position: relative; display: inline-block;  transition: all 0.50s cubic-bezier(1, 0, 0.58,0.97);color: rgb(236, 229, 229);}.nav-item a:before{content: '';position: absolute;width: 0;height: 1.1px;top: calc(50% - 1.5px);right: 0;background:rgb(253, 253, 253) ;transition: inherit ;}.nav-item a:hover:before{left: 0;width: 100%;}.dropdown-menu a:before{content: '';position: absolute;width: 0;height: 1.1px;top: calc(50% - 1.5px);right: 0;background:rgb(0, 0, 0) ;transition: inherit ;}.nav-item a:hover:before{left: 0;width: 100%;}.dropdown-menu a{text-decoration: none;font-family: 'Nunito Sans', sans-serif;position: relative; display: inline-block;  transition: all 0.50s cubic-bezier(1, 0, 0.58,0.97);color: rgb(0, 0, 0);}@media (max-width: 767.98px) {.navbar {background-color: rgb(29, 27, 27);}.navbar-brand{ font-size: 25px;}.box{width: 100%;}}@media (min-width: 1200px) {.navbar{height: 70px;}}#confessmodal{ color: black;font-family: 'Poppins', sans-serif;font-size: 14px;}textarea{width: 100%;height: 150px;}.btn{margin-top: 5px; font-size: 12px; border-radius: 24px;}@media (max-width:320px){#confessmodal{height: 390px;}}@media(min-width:321px) and (max-width: 420px){#confessmodal{height: 390px;}}@media (min-width: 420px) and (max-width: 767.98px){#confessmodal{height: 365px;}}@media (min-width: 768px) and (max-width: 991.98px){#confessmodal{height: 375px;}}@media (min-width: 992px) and (max-width: 1199.98px){#confessmodal{height: 360px;}}@media (min-width: 1200px)and (max-width: 1450px){#confessmodal{height: 365px;}}@media (min-width: 1450px){#confessmodal{height: 365px;}}
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg  ">
+    <a class="navbar-brand" style="color: rgb(255, 255, 255);font-family: 'Poppins', sans-serif; ">CONFESS</a>
+    <button class="navbar-toggler  navbar-dark " type="button" data-toggle="collapse" data-target="#navbarSupportContent">
+      <span class="navbar-toggler-icon " ></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportContent">
+      <form class="box " action="/account/search/" method="get"  >
+        <div class="s-icon"><i class="fa fa-search"></i></div>
+        <input type="search" placeholder="Search"  aria-label="Search" name="username">
+      </form>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item "><a class="nav-link" href="{% url 'confessions-home' %}">Confessions</a></li>
+        <li class="nav-item "><a class="nav-link" href="{% url 'plv' %}">Users</a></li>
+        <li class="nav-item "><a class="nav-link" href="{% url 'pic_list' %}">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Setting</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'edit_profile' user.id %}">edit</a>
+            <a class="dropdown-item" href="{% url 'about' %}">about</a>
+            <a class="dropdown-item" href="{% url 'setting' user.id %}">setting</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+          </div>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="{% url 'user_profile' request.user %}">Profile</a></li>
+      </ul>
+        {% else %}   
+        <li class="nav-item "><a class="nav-link" href="{% url 'signup' %}">Singup</a></li>
+        <li class="nav-item "><a class="nav-link" href="{% url 'login' %}">Home</a></li>
+        {% endif %} 
+    </div>
+  </nav>
+{% block modals %}{% endblock modals %}
+{% block content %} {% endblock content %}
+
+  <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="PostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="confessmodal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="PostModalLabel">Create Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/c/n" method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="conimage">Image : </label>
+            <input type="file" name="conimage" id="conimage" required>
+            <br>
+            <br>
+            <label for="captions">CONFESS : </label>
+            <br>
+            <textarea name="content" id="content" required></textarea>
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-dark">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="UploadModal" tabindex="-1" role="dialog" aria-labelledby="UploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="UploadModalLabel">upload picture</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'picpost' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+                <label for="image" >Image:</label>
+                <input type="file" name="image" id="image" required>
+                <br>
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-dark">Upload</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <script text="text/javascript" src="/jquery.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.search-icon').click(function(){
+      $('.search-icon').toggleClass('active')
+      $('.search-box').toggleClass('active')
+    })
+  });
+  $(document).ready(function(){
+    $('ul li').click(function(){
+    $(this).siblings().removeClass('active')
+    $(this).toggleClass('active')
+    })
+  });
+  $(document).ready(function(){
+    $('.toggle').click(function(){
+      $('.toggle').toggleClass('active')
+      $('header').toggleClass('active-menu')
+    })
+  });
+  $(document).ready(function(event){
+    $(document).on('click','#like',function(event){
+      event.preventDefault();
+      var pk = $(this).attr('value');
+      $.ajax({
+        type : 'POST',
+        url: "{% url 'like' %}",
+        data: {"post_id":pk, 'csrfmiddlewaretoken' : '{{ csrf_token }}'},
+        dataType: 'json',
+        success: function(response){
+          $('#like-section').html(response['form'])
+          console.log($('#like-section').html(response['form']));                
+        },
+        error: function(rs, e){
+          console.log(rs.responseText);
+        },
+      });
+    });
+  });
+  </script>
+</body>
+</html>

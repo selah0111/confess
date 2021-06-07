@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .form_horizontal { font-family: 'Poppins', sans-serif;text-align: center; }  .form_horizontal .title_login{color: #fff; font-size: 23px;font-weight: 400;letter-spacing: 1px;text-decoration: uppercase;margin: 0 0 35px 0;}.form_horizontal .form-group{margin: 0 0 10px; position: relative;}.form_horizontal .input-icon{position: absolute; left:15px; top:50%; transform: translateY(-50%);font-size: 13px;color: #777;}.form_horizontal .form-control{color: #555; background-color: #fff; font-size: 13px; letter-spacing: 1px; height: 37px; padding:2px 15px 2px 35px; border: none; border-radius: 50px;}.form_horizontal .form-control::placeholder{color: rgba(0,0,0,0.7);font-size: 14px;text-transform: capitalize;}.form_horizontal .btn{color: rgb(231, 220, 220);background-color: rgb(78, 70, 70); font-size: 12px; font-weight: 400;letter-spacing: 1px; width: 100%;padding: 10px 20px; margin: 0 0 15px 0;border: none; border-radius: 20px; text-transform: uppercase;}.form_horizontal .form-options{margin: 0; padding: 0; list-style: none;}.form_horizontal .form-options li a{color: #fff;letter-spacing: 0.5px;margin: 0 0 15px; display: block;} 
+</style>
+    <div class="container "  >
+        <div class="row justify-content-center" >
+            <div class=" col-md-12  col-sm-12 col-lg-6" style="margin-top: 30px;" >
+                <form class="form_horizontal" method = 'POST'>
+                    <h3 class="title_login">Signup </h3>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                        <input type="email" class="form-control" id="mail" placeholder="email" name='email' required>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon"><i class="fa fa-user"></i></span>   
+                        <input type="text" class="form-control" id="username" placeholder="username" name='username' required>
+                    </div>
+                    <div class="form-group ">
+                        <span class="input-icon"><i class="fa fa-lock"></i></span>     
+                        <input type="password" class="form-control" id="Password" placeholder="Password" name='password' required>
+                    </div>
+                    <div class="form-group ">
+                        <span class="input-icon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" id="confpass" placeholder="Confirm Password" name='confirm_password'>
+                    </div>
+                    {% for message in messages %}
+                        <p  style="color: rgb(221, 255, 71);">{{ message}}</p>
+                    {% endfor%}
+                    <button type="submit" class="btn signin">Sign up</button>
+                    <ul class="form-options">
+                        <li><a href="{% url 'login' %}">already have a account ?</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

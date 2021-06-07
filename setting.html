@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body{background-color: white; font-family: 'Poppins', sans-serif;}@media (min-width: 1450px){.new{width: 25%; margin:90px 0px 0px 37.5%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (min-width: 1200px)and (max-width: 1450px){.new{width: 45%; margin:40px 0px 0px 27.4%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (min-width: 992px) and (max-width: 1199.98px){.new{width: 55%; margin:40px 0px 0px 22.5%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (min-width: 768px) and (max-width: 991.98px){.new{width: 65%; margin:40px 0px 0px 17.5%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (min-width: 420px) and (max-width: 767.98px){.new{width: 85%; margin:40px 0px 0px 7.5%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (min-width:321px) and (max-width: 420px){.new{width: 84%; margin:40px 0px 0px 8%;}.div{margin-top: 20px;}.div a{width: 120px;height: 30px; font-size: 10px;}}@media (max-width:320px){.new{width: 85%; margin:40px 0px 0px 7.6%;}.div a{margin-top: 20px;width: 120px;height: 30px; font-size: 10px;}}
+</style>
+    {% if user.is_authenticated %}
+      {% if user.id == request.user.id %}
+        <form method="POST" >
+            {% csrf_token %}
+            <h2 class="text-center"></h2>
+            <div class="new text-center" >
+               {{form|crispy}}
+               <button type="submit" class="btn " style=" background-color: rgb(29, 27, 27); font-size: 14px; color: white; border-radius: 30px;">Update</button>
+            </div> 
+          </form>
+          <div class="div text-center">
+            <a href="{% url 'password_change' %}" class="btn btn-outline-dark">Change Password</a>
+          </div>
+      {% endif%}
+    {% endif %} 
+{% endblock content %}        

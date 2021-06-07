@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body{background-color: white;font-family: 'Kalam', cursive;}.container{margin-top: 50px;padding: 5%;}
+</style>
+    <div class="container"> 
+      <form method="POST">
+          {% csrf_token %}
+          <h2 class="text-center">Are You Sure</h2>
+          <p class="text-center">{{ object.content}}</p>
+          <div class="form-group text-center" >
+            <button type="submit" class="btn btn-dark"> Yes Delete</button>
+            <a class="btn btn-outline-dark" href="{% url 'confessions-home' %}"> Cancel</a>
+          </div> 
+      </form> 
+    </div>       
+{% endblock content %}        
